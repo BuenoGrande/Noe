@@ -1,9 +1,8 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  PENNY_LANE_API_KEY: z.string().min(1, "PENNY_LANE_API_KEY is required"),
-  PAYFIT_API_KEY: z.string().min(1, "PAYFIT_API_KEY is required"),
-  PAYFIT_COMPANY_ID: z.string().min(1, "PAYFIT_COMPANY_ID is required"),
+  PENNYLANE_KEY: z.string().min(1, "PENNYLANE_KEY is required"),
+  PAYFIT_KEY: z.string().min(1, "PAYFIT_KEY is required"),
 });
 
 type Env = z.infer<typeof envSchema>;
@@ -14,9 +13,8 @@ function getEnv(): Env {
   if (_env) return _env;
 
   const result = envSchema.safeParse({
-    PENNY_LANE_API_KEY: process.env.PENNY_LANE_API_KEY,
-    PAYFIT_API_KEY: process.env.PAYFIT_API_KEY,
-    PAYFIT_COMPANY_ID: process.env.PAYFIT_COMPANY_ID,
+    PENNYLANE_KEY: process.env.PENNYLANE_KEY,
+    PAYFIT_KEY: process.env.PAYFIT_KEY,
   });
 
   if (!result.success) {

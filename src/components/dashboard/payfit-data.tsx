@@ -10,22 +10,18 @@ interface Company {
   id: string;
   name: string;
   siret: string;
-  address: {
-    street: string;
-    city: string;
-    zipCode: string;
-    country: string;
-  };
+  address: string;
+  city: string;
+  nbActiveContracts: number;
 }
 
 interface Collaborator {
   id: string;
   firstName: string;
   lastName: string;
-  email: string;
-  jobTitle: string;
-  department: string;
-  status: string;
+  emails: { email: string; type: string }[];
+  teamName: string | null;
+  contracts: { id: string; startDate: string; endDate: string | null; status: string }[];
 }
 
 export function PayFitData() {
@@ -95,7 +91,7 @@ export function PayFitData() {
                   {company.name}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  SIRET: {company.siret}
+                  SIRET: {company.siret} &middot; {company.city}
                 </p>
               </div>
             )}
@@ -128,11 +124,13 @@ export function PayFitData() {
                       {collab.firstName} {collab.lastName}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {collab.jobTitle || "No title"} &middot;{" "}
-                      {collab.department || "No dept"}
+                      {collab.emails?.[0]?.email ?? "No email"} &middot;{" "}
+                      {collab.teamName || "No team"}
                     </p>
                   </div>
-                  <Badge variant="outline">{collab.status}</Badge>
+                  <Badge variant="outline">
+                    {collab.contracts?.[0]?.status ?? "unknown"}
+                  </Badge>
                 </div>
               ))}
             </div>

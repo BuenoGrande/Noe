@@ -27,7 +27,7 @@ async function rateLimitedFetch(
   const response = await fetch(url, {
     ...init,
     headers: {
-      Authorization: `Bearer ${env.PENNY_LANE_API_KEY}`,
+      Authorization: `Bearer ${env.PENNYLANE_KEY}`,
       Accept: "application/json",
       ...init?.headers,
     },
