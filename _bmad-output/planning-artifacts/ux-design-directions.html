@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BP-AI Design Directions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .direction-card { transition: all 0.3s ease; }
+        .direction-card:hover { transform: translateY(-2px); }
+        .metric-card { transition: all 0.2s ease; }
+        .metric-card:hover { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans">
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-semibold text-slate-900">BP-AI Design Directions</h1>
+                    <p class="text-slate-500 text-sm">Explore different visual approaches for your dashboard</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleDarkMode()" class="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium transition">
+                        Toggle Dark Mode
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex gap-1 py-2">
+                <button onclick="showDirection(1)" id="nav-1" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-violet-100 text-violet-700">
+                    Direction 1: Spacious
+                </button>
+                <button onclick="showDirection(2)" id="nav-2" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100">
+                    Direction 2: Compact
+                </button>
+                <button onclick="showDirection(3)" id="nav-3" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100">
+                    Direction 3: Card-Heavy
+                </button>
+                <button onclick="showDirection(4)" id="nav-4" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100">
+                    Direction 4: Minimal
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- Direction 1: Spacious & Airy (Apple-inspired) -->
+        <section id="direction-1" class="direction-section">
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-sm font-medium mb-2">Direction 1</span>
+                <h2 class="text-xl font-semibold text-slate-900">Spacious & Airy</h2>
+                <p class="text-slate-500">Maximum whitespace, hero metrics, Apple-inspired calm. Best for: Executive focus, screenshot-ready charts.</p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-lg overflow-hidden border border-slate-200 dark:border-slate-700">
+                <!-- Mock Header -->
+                <div class="px-8 py-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-violet-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">BP</span>
+                        </div>
+                        <span class="font-semibold text-slate-900 dark:text-white">BP-AI</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">M</button>
+                        <button class="px-3 py-1.5 text-sm bg-violet-100 dark:bg-violet-900 text-violet-700 dark:text-violet-300 rounded-lg font-medium">Q</button>
+                        <button class="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">Y</button>
+                    </div>
+                </div>
+
+                <!-- Hero Metric -->
+                <div class="px-8 py-12 text-center border-b border-slate-100 dark:border-slate-800">
+                    <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-2">Annual Recurring Revenue</p>
+                    <p class="text-6xl font-semibold text-slate-900 dark:text-white mb-2">€2,847,000</p>
+                    <p class="text-emerald-500 font-medium">↑ 12.4% vs last quarter</p>
+                </div>
+
+                <!-- Secondary Metrics -->
+                <div class="grid grid-cols-3 divide-x divide-slate-100 dark:divide-slate-800">
+                    <div class="px-8 py-8 text-center">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Cash in Bank</p>
+                        <p class="text-2xl font-semibold text-slate-900 dark:text-white">€1,240,000</p>
+                    </div>
+                    <div class="px-8 py-8 text-center">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Q1 Projection</p>
+                        <p class="text-2xl font-semibold text-slate-900 dark:text-white">€2,950,000</p>
+                    </div>
+                    <div class="px-8 py-8 text-center">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Net Churn</p>
+                        <p class="text-2xl font-semibold text-emerald-500">-2.1%</p>
+                    </div>
+                </div>
+
+                <!-- Chart Placeholder -->
+                <div class="px-8 py-8 border-t border-slate-100 dark:border-slate-800">
+                    <div class="h-48 bg-gradient-to-r from-violet-50 to-violet-100 dark:from-violet-900/20 dark:to-violet-800/20 rounded-xl flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-full flex items-end justify-center gap-1 h-24 mb-4">
+                                <div class="w-8 bg-violet-300 dark:bg-violet-600 rounded-t" style="height: 40%"></div>
+                                <div class="w-8 bg-violet-300 dark:bg-violet-600 rounded-t" style="height: 55%"></div>
+                                <div class="w-8 bg-violet-300 dark:bg-violet-600 rounded-t" style="height: 45%"></div>
+                                <div class="w-8 bg-violet-400 dark:bg-violet-500 rounded-t" style="height: 70%"></div>
+                                <div class="w-8 bg-violet-400 dark:bg-violet-500 rounded-t" style="height: 65%"></div>
+                                <div class="w-8 bg-violet-500 dark:bg-violet-400 rounded-t" style="height: 85%"></div>
+                                <div class="w-8 bg-violet-500 dark:bg-violet-400 rounded-t" style="height: 90%"></div>
+                                <div class="w-8 bg-violet-600 dark:bg-violet-300 rounded-t" style="height: 100%"></div>
+                            </div>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">Revenue Trend (Click any bar to drill down)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direction 2: Compact & Dense (Stripe-inspired) -->
+        <section id="direction-2" class="direction-section hidden">
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-sm font-medium mb-2">Direction 2</span>
+                <h2 class="text-xl font-semibold text-slate-900">Compact & Dense</h2>
+                <p class="text-slate-500">More information visible at once, efficient use of space. Best for: Power users, detailed analysis.</p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-lg overflow-hidden border border-slate-200 dark:border-slate-700">
+                <!-- Mock Header -->
+                <div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-6">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 bg-violet-500 rounded-md flex items-center justify-center">
+                                <span class="text-white font-bold text-xs">BP</span>
+                            </div>
+                            <span class="font-semibold text-slate-900 dark:text-white text-sm">BP-AI</span>
+                        </div>
+                        <nav class="flex gap-4 text-sm">
+                            <a href="#" class="text-violet-600 dark:text-violet-400 font-medium">Revenue</a>
+                            <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-slate-700">Clients</a>
+                            <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-slate-700">Products</a>
+                        </nav>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <input type="text" placeholder="Search clients..." class="px-3 py-1.5 text-sm border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800 w-48">
+                        <div class="flex border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                            <button class="px-2 py-1 text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">M</button>
+                            <button class="px-2 py-1 text-xs bg-violet-500 text-white font-medium">Q</button>
+                            <button class="px-2 py-1 text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Y</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metrics Row -->
+                <div class="grid grid-cols-5 divide-x divide-slate-100 dark:divide-slate-800 border-b border-slate-100 dark:border-slate-800">
+                    <div class="px-4 py-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium mb-0.5">ARR</p>
+                        <p class="text-xl font-semibold text-slate-900 dark:text-white">€2.85M</p>
+                        <p class="text-emerald-500 text-xs">↑ 12.4%</p>
+                    </div>
+                    <div class="px-4 py-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium mb-0.5">Cash</p>
+                        <p class="text-xl font-semibold text-slate-900 dark:text-white">€1.24M</p>
+                        <p class="text-slate-400 text-xs">in bank</p>
+                    </div>
+                    <div class="px-4 py-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium mb-0.5">Q1 Target</p>
+                        <p class="text-xl font-semibold text-slate-900 dark:text-white">€2.95M</p>
+                        <p class="text-violet-500 text-xs">97% on track</p>
+                    </div>
+                    <div class="px-4 py-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium mb-0.5">Net Churn</p>
+                        <p class="text-xl font-semibold text-emerald-500">-2.1%</p>
+                        <p class="text-slate-400 text-xs">expansion > churn</p>
+                    </div>
+                    <div class="px-4 py-4">
+                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium mb-0.5">Clients</p>
+                        <p class="text-xl font-semibold text-slate-900 dark:text-white">127</p>
+                        <p class="text-emerald-500 text-xs">+8 this quarter</p>
+                    </div>
+                </div>
+
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-2 divide-x divide-slate-100 dark:divide-slate-800">
+                    <!-- Chart -->
+                    <div class="p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="font-medium text-slate-900 dark:text-white text-sm">Revenue Trend</h3>
+                            <span class="text-xs text-slate-500">Last 8 months</span>
+                        </div>
+                        <div class="h-36 bg-gradient-to-r from-violet-50 to-slate-50 dark:from-violet-900/20 dark:to-slate-800/20 rounded-lg flex items-end justify-around px-2 pb-2">
+                            <div class="w-6 bg-violet-300 dark:bg-violet-600 rounded-t" style="height: 40%"></div>
+                            <div class="w-6 bg-violet-300 dark:bg-violet-600 rounded-t" style="height: 55%"></div>
+                            <div class="w-6 bg-violet-400 dark:bg-violet-500 rounded-t" style="height: 65%"></div>
+                            <div class="w-6 bg-violet-400 dark:bg-violet-500 rounded-t" style="height: 60%"></div>
+                            <div class="w-6 bg-violet-500 dark:bg-violet-400 rounded-t" style="height: 75%"></div>
+                            <div class="w-6 bg-violet-500 dark:bg-violet-400 rounded-t" style="height: 85%"></div>
+                            <div class="w-6 bg-violet-600 dark:bg-violet-300 rounded-t" style="height: 90%"></div>
+                            <div class="w-6 bg-violet-600 dark:bg-violet-300 rounded-t" style="height: 100%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Top Clients -->
+                    <div class="p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="font-medium text-slate-900 dark:text-white text-sm">Top Clients</h3>
+                            <a href="#" class="text-xs text-violet-500 hover:text-violet-600">View all →</a>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+                                <span class="text-sm text-slate-900 dark:text-white">Acme Corp</span>
+                                <span class="text-sm font-medium text-slate-900 dark:text-white">€420,000</span>
+                            </div>
+                            <div class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+                                <span class="text-sm text-slate-900 dark:text-white">TechStart Inc</span>
+                                <span class="text-sm font-medium text-slate-900 dark:text-white">€285,000</span>
+                            </div>
+                            <div class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+                                <span class="text-sm text-slate-900 dark:text-white">Global Solutions</span>
+                                <span class="text-sm font-medium text-slate-900 dark:text-white">€195,000</span>
+                            </div>
+                            <div class="flex items-center justify-between py-1.5 px-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+                                <span class="text-sm text-slate-900 dark:text-white">DataFlow SA</span>
+                                <span class="text-sm font-medium text-slate-900 dark:text-white">€156,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direction 3: Card-Heavy (Dashboard Grid) -->
+        <section id="direction-3" class="direction-section hidden">
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-sm font-medium mb-2">Direction 3</span>
+                <h2 class="text-xl font-semibold text-slate-900">Card-Heavy Grid</h2>
+                <p class="text-slate-500">Modular card-based layout, each metric in its own container. Best for: Flexible viewing, clear separation.</p>
+            </div>
+
+            <div class="bg-slate-50 dark:bg-slate-950 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-violet-500 rounded-xl flex items-center justify-center">
+                            <span class="text-white font-bold">BP</span>
+                        </div>
+                        <div>
+                            <h2 class="font-semibold text-slate-900 dark:text-white">Revenue Command Center</h2>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Q1 2026 Overview</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="px-4 py-2 text-sm text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">Monthly</button>
+                        <button class="px-4 py-2 text-sm bg-violet-500 text-white rounded-lg font-medium">Quarterly</button>
+                        <button class="px-4 py-2 text-sm text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">Yearly</button>
+                    </div>
+                </div>
+
+                <!-- Card Grid -->
+                <div class="grid grid-cols-4 gap-4 mb-4">
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-700 metric-card cursor-pointer">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400">ARR</span>
+                            <span class="w-8 h-8 bg-violet-100 dark:bg-violet-900 rounded-lg flex items-center justify-center">
+                                <span class="text-violet-600 dark:text-violet-400 text-lg">€</span>
+                            </span>
+                        </div>
+                        <p class="text-3xl font-semibold text-slate-900 dark:text-white mb-1">€2.85M</p>
+                        <p class="text-sm text-emerald-500">↑ 12.4% vs LQ</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-700 metric-card cursor-pointer">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Cash</span>
+                            <span class="w-8 h-8 bg-emerald-100 dark:bg-emerald-900 rounded-lg flex items-center justify-center">
+                                <span class="text-emerald-600 dark:text-emerald-400 text-lg">$</span>
+                            </span>
+                        </div>
+                        <p class="text-3xl font-semibold text-slate-900 dark:text-white mb-1">€1.24M</p>
+                        <p class="text-sm text-slate-500">in bank</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-700 metric-card cursor-pointer">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Q1 Projection</span>
+                            <span class="w-8 h-8 bg-amber-100 dark:bg-amber-900 rounded-lg flex items-center justify-center">
+                                <span class="text-amber-600 dark:text-amber-400 text-lg">→</span>
+                            </span>
+                        </div>
+                        <p class="text-3xl font-semibold text-slate-900 dark:text-white mb-1">€2.95M</p>
+                        <p class="text-sm text-violet-500">97% confidence</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-700 metric-card cursor-pointer">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Net Churn</span>
+                            <span class="w-8 h-8 bg-emerald-100 dark:bg-emerald-900 rounded-lg flex items-center justify-center">
+                                <span class="text-emerald-600 dark:text-emerald-400 text-lg">↓</span>
+                            </span>
+                        </div>
+                        <p class="text-3xl font-semibold text-emerald-500 mb-1">-2.1%</p>
+                        <p class="text-sm text-slate-500">healthy growth</p>
+                    </div>
+                </div>
+
+                <!-- Large Cards Row -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-medium text-slate-900 dark:text-white mb-4">Revenue by Segment</h3>
+                        <div class="h-40 flex items-end justify-around">
+                            <div class="text-center">
+                                <div class="w-16 bg-violet-500 rounded-t mb-2" style="height: 100px"></div>
+                                <span class="text-xs text-slate-500">New</span>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-16 bg-violet-400 rounded-t mb-2" style="height: 140px"></div>
+                                <span class="text-xs text-slate-500">Renewal</span>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-16 bg-emerald-400 rounded-t mb-2" style="height: 60px"></div>
+                                <span class="text-xs text-slate-500">Expansion</span>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-16 bg-red-400 rounded-t mb-2" style="height: 30px"></div>
+                                <span class="text-xs text-slate-500">Churn</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-medium text-slate-900 dark:text-white">Top Clients by Revenue</h3>
+                            <span class="text-xs text-violet-500 cursor-pointer hover:text-violet-600">View all</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-violet-100 dark:bg-violet-900 rounded-full flex items-center justify-center text-violet-600 dark:text-violet-400 text-xs font-medium">AC</div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-slate-900 dark:text-white">Acme Corp</p>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 mt-1">
+                                        <div class="bg-violet-500 h-1.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-medium text-slate-900 dark:text-white">€420K</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-xs font-medium">TS</div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-slate-900 dark:text-white">TechStart Inc</p>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 mt-1">
+                                        <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-medium text-slate-900 dark:text-white">€285K</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-amber-100 dark:bg-amber-900 rounded-full flex items-center justify-center text-amber-600 dark:text-amber-400 text-xs font-medium">GS</div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-slate-900 dark:text-white">Global Solutions</p>
+                                    <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 mt-1">
+                                        <div class="bg-amber-500 h-1.5 rounded-full" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-medium text-slate-900 dark:text-white">€195K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direction 4: Minimal (Ultra-clean) -->
+        <section id="direction-4" class="direction-section hidden">
+            <div class="mb-6">
+                <span class="inline-block px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-sm font-medium mb-2">Direction 4</span>
+                <h2 class="text-xl font-semibold text-slate-900">Ultra-Minimal</h2>
+                <p class="text-slate-500">Maximum restraint, typography-driven, almost no visual chrome. Best for: Ultimate clarity, distraction-free.</p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-lg overflow-hidden border border-slate-200 dark:border-slate-700 p-12">
+                <!-- Minimal Header -->
+                <div class="flex items-center justify-between mb-16">
+                    <span class="text-slate-400 dark:text-slate-500 text-sm">BP-AI · Q1 2026</span>
+                    <div class="flex items-center gap-6 text-sm">
+                        <span class="text-slate-400 dark:text-slate-500">M</span>
+                        <span class="text-violet-600 dark:text-violet-400 font-medium">Q</span>
+                        <span class="text-slate-400 dark:text-slate-500">Y</span>
+                    </div>
+                </div>
+
+                <!-- Single Hero Metric -->
+                <div class="mb-16">
+                    <p class="text-slate-400 dark:text-slate-500 text-sm tracking-wide uppercase mb-4">Annual Recurring Revenue</p>
+                    <p class="text-7xl font-semibold text-slate-900 dark:text-white tracking-tight">€2,847,000</p>
+                </div>
+
+                <!-- Minimal Stats -->
+                <div class="grid grid-cols-4 gap-12 mb-16">
+                    <div>
+                        <p class="text-slate-400 dark:text-slate-500 text-xs tracking-wide uppercase mb-2">Growth</p>
+                        <p class="text-2xl font-medium text-emerald-500">+12.4%</p>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 dark:text-slate-500 text-xs tracking-wide uppercase mb-2">Cash</p>
+                        <p class="text-2xl font-medium text-slate-900 dark:text-white">€1.24M</p>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 dark:text-slate-500 text-xs tracking-wide uppercase mb-2">Projection</p>
+                        <p class="text-2xl font-medium text-slate-900 dark:text-white">€2.95M</p>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 dark:text-slate-500 text-xs tracking-wide uppercase mb-2">Churn</p>
+                        <p class="text-2xl font-medium text-emerald-500">-2.1%</p>
+                    </div>
+                </div>
+
+                <!-- Minimal List -->
+                <div>
+                    <p class="text-slate-400 dark:text-slate-500 text-xs tracking-wide uppercase mb-6">Top Revenue</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between py-3 border-b border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 -mx-4 px-4 rounded">
+                            <span class="text-slate-900 dark:text-white">Acme Corp</span>
+                            <span class="font-medium text-slate-900 dark:text-white">€420,000</span>
+                        </div>
+                        <div class="flex items-center justify-between py-3 border-b border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 -mx-4 px-4 rounded">
+                            <span class="text-slate-900 dark:text-white">TechStart Inc</span>
+                            <span class="font-medium text-slate-900 dark:text-white">€285,000</span>
+                        </div>
+                        <div class="flex items-center justify-between py-3 border-b border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 -mx-4 px-4 rounded">
+                            <span class="text-slate-900 dark:text-white">Global Solutions</span>
+                            <span class="font-medium text-slate-900 dark:text-white">€195,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Summary -->
+        <section class="mt-12 bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
+            <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-6">Direction Comparison</h2>
+            <div class="grid grid-cols-4 gap-6">
+                <div class="text-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-violet-300 dark:hover:border-violet-700 cursor-pointer transition">
+                    <div class="w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-violet-600 dark:text-violet-400 text-xl">1</span>
+                    </div>
+                    <h3 class="font-medium text-slate-900 dark:text-white mb-1">Spacious</h3>
+                    <p class="text-xs text-slate-500">Hero metrics, maximum whitespace</p>
+                </div>
+                <div class="text-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-violet-300 dark:hover:border-violet-700 cursor-pointer transition">
+                    <div class="w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-violet-600 dark:text-violet-400 text-xl">2</span>
+                    </div>
+                    <h3 class="font-medium text-slate-900 dark:text-white mb-1">Compact</h3>
+                    <p class="text-xs text-slate-500">Dense info, power user focus</p>
+                </div>
+                <div class="text-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-violet-300 dark:hover:border-violet-700 cursor-pointer transition">
+                    <div class="w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-violet-600 dark:text-violet-400 text-xl">3</span>
+                    </div>
+                    <h3 class="font-medium text-slate-900 dark:text-white mb-1">Card Grid</h3>
+                    <p class="text-xs text-slate-500">Modular, clear separation</p>
+                </div>
+                <div class="text-center p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-violet-300 dark:hover:border-violet-700 cursor-pointer transition">
+                    <div class="w-12 h-12 bg-violet-100 dark:bg-violet-900 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-violet-600 dark:text-violet-400 text-xl">4</span>
+                    </div>
+                    <h3 class="font-medium text-slate-900 dark:text-white mb-1">Minimal</h3>
+                    <p class="text-xs text-slate-500">Ultra-clean, typography-driven</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showDirection(num) {
+            // Hide all directions
+            document.querySelectorAll('.direction-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            // Show selected
+            document.getElementById('direction-' + num).classList.remove('hidden');
+
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-violet-100', 'text-violet-700');
+                btn.classList.add('text-slate-600');
+            });
+            document.getElementById('nav-' + num).classList.add('bg-violet-100', 'text-violet-700');
+            document.getElementById('nav-' + num).classList.remove('text-slate-600');
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
