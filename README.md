@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BP-AI
 
-## Getting Started
+Dashboard connecting **Penny Lane** (accounting) and **PayFit** (HR/payroll) to display business data in one place.
 
-First, run the development server:
+Built with Next.js 16, TypeScript, Tailwind 4, and shadcn/ui.
+
+## Quick Start
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Set up environment variables
+cp .env.example .env.local
+# Then edit .env.local with your real API keys (see below)
+
+# 3. Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Only two keys are needed in `.env.local`:
 
-## Learn More
+| Variable | Where to get it |
+|----------|----------------|
+| `PENNYLANE_KEY` | [Penny Lane](https://app.pennylane.com) > Settings > Integrations > API tokens |
+| `PAYFIT_KEY` | PayFit partner portal |
 
-To learn more about Next.js, take a look at the following resources:
+## API Integrations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Penny Lane (Accounting)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Endpoint | Route | Description |
+|----------|-------|-------------|
+| `GET /api/v1/penny-lane/status` | Connection test via `/me` | |
+| `GET /api/v1/penny-lane/invoices` | List customer invoices | Supports `?page=N` |
+| `GET /api/v1/penny-lane/customers` | List customers | Supports `?page=N` |
 
-## Deploy on Vercel
+- Base URL: `https://app.pennylane.com/api/external/v2`
+- **Must use v2 endpoints** — our API key has readonly scopes only
+- Rate limited to 4 calls/sec (handled automatically)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### PayFit (HR/Payroll)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Endpoint | Route | Description |
+|----------|-------|-------------|
+| `GET /api/v1/payfit/status` | Connection test | |
+| `GET /api/v1/payfit/company` | Company info | |
+| `GET /api/v1/payfit/collaborators` | List employees | |
+
+- Base URL: `https://partner-api.payfit.com`
+- Company ID: `5e21d632dd5bbd76b90820df` (hardcoded)
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx                     # Root layout (Inter font)
+│   ├── page.tsx                       # Dashboard page
+│   ├── globals.css                    # Tailwind + shadcn tokens
+│   └── api/v1/
+│       ├── penny-lane/               # 3 routes: status, invoices, customers
+│       └── payfit/                    # 3 routes: status, company, collaborators
+├── components/
+│   ├── dashboard/                     # Dashboard-specific components
+│   │   ├── connection-status.tsx      # Green/red dots per integration
+│   │   ├── metric-card.tsx            # Reusable metric card
+│   │   ├── penny-lane-data.tsx        # Invoice & customer display
+│   │   └── payfit-data.tsx            # Employee & company display
+│   └── ui/                            # shadcn/ui components (card, badge, skeleton)
+├── services/
+│   ├── penny-lane/
+│   │   ├── client.ts                  # HTTP client with rate limiter
+│   │   └── types.ts
+│   └── payfit/
+│       ├── client.ts                  # HTTP client
+│       └── types.ts
+└── lib/
+    ├── env.ts                         # Zod validation of env vars
+    ├── api-response.ts                # Standardized { success, data } / { success, error }
+    ├── format-currency.ts             # Integer cents to EUR string
+    └── utils.ts                       # cn() helper (shadcn)
+```
+
+## Conventions
+
+- **API responses** always use: `{ success: true, data, meta? }` or `{ success: false, error: { code, message } }`
+- **Currency** stored as integer cents, formatted with `formatCurrency()`
+- **Logging** uses prefixed format: `[PENNY-LANE]`, `[PAYFIT]`, `[API]`, `[ENV]`
+- **Naming**: Components PascalCase, utilities kebab-case, functions camelCase
